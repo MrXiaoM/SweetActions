@@ -1,0 +1,11 @@
+name: SweetActions
+version: '${version}'
+main: top.mrxiaom.sweet.actions.SweetActions
+api-version: 1.13
+depend: [  ]
+softdepend: [ PlaceholderAPI ]
+authors: [ MrXiaoM ]
+commands:
+  sweetactions:
+    description: 'The main command of SweetActions'
+    aliases: [ sactions, actions, sa ]
