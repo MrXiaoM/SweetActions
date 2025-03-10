@@ -9,7 +9,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.jetbrains.annotations.Nullable;
 import top.mrxiaom.pluginbase.func.AutoRegister;
 import top.mrxiaom.sweet.actions.SweetActions;
-import top.mrxiaom.sweet.actions.func.ScriptBlockManager;
 import top.mrxiaom.sweet.actions.func.entry.BlockLoc;
 import top.mrxiaom.sweet.actions.func.entry.EnumBlockTriggerType;
 import top.mrxiaom.sweet.actions.func.entry.ScriptBlock;
@@ -24,14 +23,8 @@ public class WalkListener extends AbstractBlockListener {
 
     @Override
     public void reloadConfig(MemoryConfiguration config) {
-        ScriptBlockManager manager = ScriptBlockManager.inst();
         map.clear();
-        for (ScriptBlock scriptBlock : manager.all()) {
-            if (scriptBlock.type.equals(EnumBlockTriggerType.WALK)) {
-                Map<BlockLoc, ScriptBlock> blockMap = getSubMap(scriptBlock.world);
-                blockMap.put(scriptBlock.loc, scriptBlock);
-            }
-        }
+        reloadMapWithType(EnumBlockTriggerType.WALK);
     }
 
     private boolean isNotMoved(Location loc1, Location loc2) {
@@ -47,6 +40,7 @@ public class WalkListener extends AbstractBlockListener {
     }
 
     @Nullable
+    @Override
     public ScriptBlock getScriptBlock(Location loc) {
         Map<BlockLoc, ScriptBlock> blockMap = getBlockMap(loc);
         if (blockMap == null) return null;
