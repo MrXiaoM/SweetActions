@@ -20,7 +20,6 @@ import java.util.Map;
 public class WalkListener extends AbstractBlockListener {
     public WalkListener(SweetActions plugin) {
         super(plugin);
-        registerEvents();
     }
 
     @Override
