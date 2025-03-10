@@ -26,6 +26,7 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/")
 }
 
+@Suppress("VulnerableLibrariesLocal")
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20-R0.1-SNAPSHOT")
     // compileOnly("org.spigotmc:spigot:1.20") // NMS
@@ -57,6 +58,13 @@ tasks {
         ).forEach { (original, target) ->
             relocate(original, "$shadowGroup.$target")
         }
+        listOf(
+            "top/mrxiaom/pluginbase/func/AbstractGui*",
+            "top/mrxiaom/pluginbase/func/gui/*",
+            "top/mrxiaom/pluginbase/func/GuiManager*",
+            "top/mrxiaom/pluginbase/gui/*",
+            "top/mrxiaom/pluginbase/utils/Bytes*",
+        ).forEach(this::exclude)
     }
     build {
         dependsOn(shadowJar)
