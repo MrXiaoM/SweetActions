@@ -44,7 +44,7 @@ public class WalkListener extends AbstractBlockListener {
     public ScriptBlock getScriptBlock(Location loc) {
         Map<BlockLoc, ScriptBlock> blockMap = getBlockMap(loc);
         if (blockMap == null) return null;
-        return blockMap.get(BlockLoc.of(loc, -1));
+        return blockMap.get(BlockLoc.of(loc, true));
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

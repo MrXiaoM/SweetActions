@@ -31,7 +31,15 @@ public class BlockLoc {
     public static BlockLoc of(Location loc) {
         return new BlockLoc(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
     }
-    public static BlockLoc of(Location loc, int yOffset) {
-        return new BlockLoc(loc.getBlockX(), loc.getBlockY() + yOffset, loc.getBlockZ());
+    public static BlockLoc of(Location loc, boolean underfoot) {
+        if (underfoot) {
+            double y = loc.getY();
+            double blockY = Math.floor(y);
+            if (y == blockY) {
+                return new BlockLoc(loc.getBlockX(),  (int) blockY - 1, loc.getBlockZ());
+            }
+            return new BlockLoc(loc.getBlockX(), (int) blockY, loc.getBlockZ());
+        }
+        return of(loc);
     }
 }
