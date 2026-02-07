@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.mrxiaom.pluginbase.api.IAction;
 import top.mrxiaom.pluginbase.func.AutoRegister;
+import top.mrxiaom.pluginbase.utils.ConfigUtils;
 import top.mrxiaom.pluginbase.utils.Util;
 import top.mrxiaom.sweet.actions.SweetActions;
 import top.mrxiaom.sweet.actions.func.entry.BlockLoc;
@@ -64,7 +65,7 @@ public class ScriptBlockManager extends AbstractModule {
                 continue;
             }
             YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
-            List<ConfigurationSection> list = Util.getSectionList(config, "blocks");
+            List<ConfigurationSection> list = ConfigUtils.getSectionList(config, "blocks");
             for (ConfigurationSection section : list) {
                 ScriptBlock scriptBlock = loadScriptBlock(section, world);
                 if (scriptBlock != null) {
