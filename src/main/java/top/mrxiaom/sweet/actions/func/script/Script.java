@@ -1,4 +1,4 @@
-package top.mrxiaom.sweet.actions.func.entry;
+package top.mrxiaom.sweet.actions.func.script;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

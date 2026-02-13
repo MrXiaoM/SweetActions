@@ -1,4 +1,4 @@
-package top.mrxiaom.sweet.actions.func.entry;
+package top.mrxiaom.sweet.actions.func.block;
 
 import org.bukkit.Location;
 

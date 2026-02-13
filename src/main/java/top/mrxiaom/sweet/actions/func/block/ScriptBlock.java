@@ -1,8 +1,9 @@
-package top.mrxiaom.sweet.actions.func.entry;
+package top.mrxiaom.sweet.actions.func.block;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import top.mrxiaom.sweet.actions.SweetActions;
+import top.mrxiaom.sweet.actions.func.script.Script;
 
 import java.util.HashMap;
 import java.util.Map;

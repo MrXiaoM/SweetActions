@@ -9,8 +9,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.PlayerInteractEvent;
 import top.mrxiaom.pluginbase.func.AutoRegister;
 import top.mrxiaom.sweet.actions.SweetActions;
-import top.mrxiaom.sweet.actions.func.entry.EnumBlockTriggerType;
-import top.mrxiaom.sweet.actions.func.entry.ScriptBlock;
+import top.mrxiaom.sweet.actions.func.block.EnumBlockTriggerType;
+import top.mrxiaom.sweet.actions.func.block.ScriptBlock;
 
 @AutoRegister
 public class RightClickBlockListener extends AbstractBlockListener {

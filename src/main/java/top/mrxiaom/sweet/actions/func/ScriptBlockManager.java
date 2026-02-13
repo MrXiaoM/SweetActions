@@ -13,10 +13,10 @@ import top.mrxiaom.pluginbase.func.AutoRegister;
 import top.mrxiaom.pluginbase.utils.ConfigUtils;
 import top.mrxiaom.pluginbase.utils.Util;
 import top.mrxiaom.sweet.actions.SweetActions;
-import top.mrxiaom.sweet.actions.func.entry.BlockLoc;
-import top.mrxiaom.sweet.actions.func.entry.EnumBlockTriggerType;
-import top.mrxiaom.sweet.actions.func.entry.Script;
-import top.mrxiaom.sweet.actions.func.entry.ScriptBlock;
+import top.mrxiaom.sweet.actions.func.block.BlockLoc;
+import top.mrxiaom.sweet.actions.func.block.EnumBlockTriggerType;
+import top.mrxiaom.sweet.actions.func.script.Script;
+import top.mrxiaom.sweet.actions.func.block.ScriptBlock;
 
 import java.io.File;
 import java.io.IOException;

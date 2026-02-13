@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable;
 import top.mrxiaom.sweet.actions.SweetActions;
 import top.mrxiaom.sweet.actions.func.AbstractModule;
 import top.mrxiaom.sweet.actions.func.ScriptBlockManager;
-import top.mrxiaom.sweet.actions.func.entry.BlockLoc;
-import top.mrxiaom.sweet.actions.func.entry.EnumBlockTriggerType;
-import top.mrxiaom.sweet.actions.func.entry.ScriptBlock;
+import top.mrxiaom.sweet.actions.func.block.BlockLoc;
+import top.mrxiaom.sweet.actions.func.block.EnumBlockTriggerType;
+import top.mrxiaom.sweet.actions.func.block.ScriptBlock;
 
 import java.util.HashMap;
 import java.util.Map;
