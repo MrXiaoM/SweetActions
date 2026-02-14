@@ -27,12 +27,13 @@ public abstract class AbstractBlockListener extends AbstractModule implements Li
     protected void reloadMapWithType(EnumBlockTriggerType type) {
         ScriptBlockManager manager = ScriptBlockManager.inst();
         for (ScriptBlock scriptBlock : manager.all()) {
-            if (scriptBlock.type.equals(type)) {
-                Map<BlockLoc, ScriptBlock> blockMap = getSubMap(scriptBlock.world);
-                blockMap.put(scriptBlock.loc, scriptBlock);
+            if (scriptBlock.type().equals(type)) {
+                Map<BlockLoc, ScriptBlock> blockMap = getSubMap(scriptBlock.world());
+                blockMap.put(scriptBlock.loc(), scriptBlock);
             }
         }
     }
+    public abstract void reloadMap();
     @Nullable
     public ScriptBlock getScriptBlock(Location loc) {
         Map<BlockLoc, ScriptBlock> blockMap = getBlockMap(loc);

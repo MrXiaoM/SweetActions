@@ -5,13 +5,61 @@ import org.bukkit.Location;
 import java.util.Objects;
 
 public class BlockLoc {
-    public int x;
-    public int y;
-    public int z;
+    private int x;
+    private int y;
+    private int z;
 
     public BlockLoc(int x, int y, int z) {
         this.x = x;
         this.y = y;
+        this.z = z;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int x() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int y() {
+        return y;
+    }
+
+    public int getZ() {
+        return z;
+    }
+
+    public int z() {
+        return z;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void x(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void y(int y) {
+        this.y = y;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+
+    public void z(int z) {
         this.z = z;
     }
 

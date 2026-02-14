@@ -20,6 +20,11 @@ public class RightClickBlockListener extends AbstractBlockListener {
 
     @Override
     public void reloadConfig(MemoryConfiguration config) {
+        reloadMap();
+    }
+
+    @Override
+    public void reloadMap() {
         map.clear();
         reloadMapWithType(EnumBlockTriggerType.RIGHT_CLICK);
         reloadMapWithType(EnumBlockTriggerType.SHIFT_RIGHT_CLICK);
@@ -32,7 +37,7 @@ public class RightClickBlockListener extends AbstractBlockListener {
         if (block == null) return;
         ScriptBlock scriptBlock = getScriptBlock(block.getLocation());
         Player player = e.getPlayer();
-        if (scriptBlock != null && scriptBlock.type.check(player)) {
+        if (scriptBlock != null && scriptBlock.type().check(player)) {
             scriptBlock.handleExecute(plugin, player, block);
         }
     }

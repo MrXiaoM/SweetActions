@@ -23,6 +23,11 @@ public class WalkListener extends AbstractBlockListener {
 
     @Override
     public void reloadConfig(MemoryConfiguration config) {
+        reloadMap();
+    }
+
+    @Override
+    public void reloadMap() {
         map.clear();
         reloadMapWithType(EnumBlockTriggerType.WALK);
     }

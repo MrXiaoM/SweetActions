@@ -2,6 +2,7 @@ package top.mrxiaom.sweet.actions.func.block;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import top.mrxiaom.sweet.actions.SweetActions;
 import top.mrxiaom.sweet.actions.func.script.Script;
 
@@ -10,24 +11,69 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ScriptBlock {
-    public String world;
-    public BlockLoc loc;
-    public EnumBlockTriggerType type;
-    public String scriptId;
-    public Script script;
-    public int cooldownGlobal;
-    public int cooldownPerPlayer;
+    private final String world;
+    private final BlockLoc loc;
+    private EnumBlockTriggerType type;
+    private Script script;
+    private int cooldownGlobal;
+    private int cooldownPerPlayer;
 
     private final Map<UUID, Long> cooldownMap = new HashMap<>();
     private long cooldownNext;
 
-    public ScriptBlock(String world, BlockLoc loc, EnumBlockTriggerType type, String scriptId, Script script, int cooldownGlobal, int cooldownPerPlayer) {
+    public ScriptBlock(
+            @NotNull String world,
+            @NotNull BlockLoc loc,
+            @NotNull EnumBlockTriggerType type,
+            @NotNull Script script,
+            int cooldownGlobal,
+            int cooldownPerPlayer
+    ) {
         this.world = world;
         this.loc = loc;
         this.type = type;
-        this.scriptId = scriptId;
         this.script = script;
         this.cooldownGlobal = cooldownGlobal;
+        this.cooldownPerPlayer = cooldownPerPlayer;
+    }
+
+    public String world() {
+        return world;
+    }
+
+    public BlockLoc loc() {
+        return loc;
+    }
+
+    public EnumBlockTriggerType type() {
+        return type;
+    }
+
+    public void type(EnumBlockTriggerType type) {
+        this.type = type;
+    }
+
+    public Script script() {
+        return script;
+    }
+
+    public void script(Script script) {
+        this.script = script;
+    }
+
+    public int cooldownGlobal() {
+        return cooldownGlobal;
+    }
+
+    public void cooldownGlobal(int cooldownGlobal) {
+        this.cooldownGlobal = cooldownGlobal;
+    }
+
+    public int cooldownPerPlayer() {
+        return cooldownPerPlayer;
+    }
+
+    public void cooldownPerPlayer(int cooldownPerPlayer) {
         this.cooldownPerPlayer = cooldownPerPlayer;
     }
 
