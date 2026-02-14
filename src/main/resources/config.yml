@@ -1,3 +1,6 @@
 
 scripts-folder:
   - './scripts'
+
+click-items-folder:
+  - './click-items'

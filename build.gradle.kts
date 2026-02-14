@@ -40,6 +40,7 @@ dependencies {
     base.library("net.kyori:adventure-text-serializer-plain:4.22.0")
 
     implementation("de.tr7zw:item-nbt-api:2.15.5")
+    implementation("top.mrxiaom:EvalEx-j8:3.4.0")
     implementation("com.github.technicallycoded:FoliaLib:0.4.4") { isTransitive = false }
     for (artifact in pluginBaseModules) {
         implementation("$artifact")
@@ -67,6 +68,7 @@ tasks {
         mapOf(
             "top.mrxiaom.pluginbase" to "base",
             "de.tr7zw.changeme.nbtapi" to "nbtapi",
+            "com.ezylang.evalex" to "evalex",
             "com.tcoded.folialib" to "folialib",
         ).forEach { (original, target) ->
             relocate(original, "$shadowGroup.$target")

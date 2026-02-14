@@ -1,16 +1,23 @@
 package top.mrxiaom.sweet.actions;
 
 import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.jetbrains.annotations.NotNull;
 import top.mrxiaom.pluginbase.BukkitPlugin;
+import top.mrxiaom.pluginbase.paper.PaperFactory;
 import top.mrxiaom.pluginbase.resolver.DefaultLibraryResolver;
 import top.mrxiaom.pluginbase.utils.ClassLoaderWrapper;
 import top.mrxiaom.pluginbase.utils.ConfigUtils;
+import top.mrxiaom.pluginbase.utils.item.ItemEditor;
 import top.mrxiaom.pluginbase.utils.scheduler.FoliaLibScheduler;
+import top.mrxiaom.sweet.actions.api.ItemMatcher;
 
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SweetActions extends BukkitPlugin {
     public static SweetActions getInstance() {
@@ -47,11 +54,39 @@ public class SweetActions extends BukkitPlugin {
     }
 
     @Override
+    public @NotNull ItemEditor initItemEditor() {
+        return PaperFactory.createItemEditor();
+    }
+
+    @Override
     protected void beforeLoad() {
         MinecraftVersion.replaceLogger(getLogger());
         MinecraftVersion.disableUpdateCheck();
         MinecraftVersion.disableBStats();
         MinecraftVersion.getVersion();
+    }
+
+    private final Map<String, ItemMatcher.Provider> itemMatcherRegistry = new HashMap<>();
+
+    public void registerItemMatcher(@NotNull String type, @NotNull ItemMatcher.Provider provider) {
+        itemMatcherRegistry.put(type, provider);
+    }
+
+    public void unregisterItemMatcher(@NotNull String type) {
+        itemMatcherRegistry.remove(type);
+    }
+
+    @NotNull
+    public ItemMatcher parseItemMatcher(@NotNull ConfigurationSection section) throws RuntimeException {
+        String type = section.getString("type");
+        if (type == null) {
+            throw new IllegalArgumentException("未输入参数 type");
+        }
+        ItemMatcher.Provider provider = itemMatcherRegistry.get(type);
+        if (provider != null) {
+            return provider.load(section);
+        }
+        throw new IllegalArgumentException("找不到物品匹配器类型 " + type);
     }
 
     @Override
