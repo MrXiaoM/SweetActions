@@ -3,9 +3,11 @@ package top.mrxiaom.sweet.actions.func;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.mrxiaom.pluginbase.api.IAction;
@@ -186,6 +188,12 @@ public class ScriptBlockManager extends AbstractModule {
     @Nullable
     public Script getScript(String id) {
         return scripts.get(id);
+    }
+
+    @Nullable
+    @Contract("null->null")
+    public ScriptBlock get(@Nullable Block block) {
+        return block == null ? null : get(block.getWorld().getName(), BlockLoc.of(block));
     }
 
     @Nullable

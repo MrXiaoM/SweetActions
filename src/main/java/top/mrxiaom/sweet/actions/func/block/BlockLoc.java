@@ -1,6 +1,7 @@
 package top.mrxiaom.sweet.actions.func.block;
 
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 
 import java.util.Objects;
 
@@ -76,6 +77,12 @@ public class BlockLoc {
         return Objects.hash(x, y, z);
     }
 
+    public static BlockLoc of(Block block) {
+        return of(block.getLocation());
+    }
+    public static BlockLoc of(Block block, boolean underfoot) {
+        return of(block.getLocation(), underfoot);
+    }
     public static BlockLoc of(Location loc) {
         return new BlockLoc(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
     }

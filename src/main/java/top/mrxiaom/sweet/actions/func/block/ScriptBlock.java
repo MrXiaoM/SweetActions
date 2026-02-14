@@ -37,27 +37,41 @@ public class ScriptBlock {
         this.cooldownPerPlayer = cooldownPerPlayer;
     }
 
+    @NotNull
     public String world() {
         return world;
     }
 
+    @NotNull
     public BlockLoc loc() {
         return loc;
     }
 
+    @NotNull
+    public ScriptBlock withLoc(@NotNull BlockLoc loc) {
+        return new ScriptBlock(world, loc, type, script, cooldownGlobal, cooldownPerPlayer);
+    }
+
+    @NotNull
+    public ScriptBlock withLoc(@NotNull String world, @NotNull BlockLoc loc) {
+        return new ScriptBlock(world, loc, type, script, cooldownGlobal, cooldownPerPlayer);
+    }
+
+    @NotNull
     public EnumBlockTriggerType type() {
         return type;
     }
 
-    public void type(EnumBlockTriggerType type) {
+    public void type(@NotNull EnumBlockTriggerType type) {
         this.type = type;
     }
 
+    @NotNull
     public Script script() {
         return script;
     }
 
-    public void script(Script script) {
+    public void script(@NotNull Script script) {
         this.script = script;
     }
 
