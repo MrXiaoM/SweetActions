@@ -9,7 +9,7 @@ plugins {
 
 buildscript {
     repositories.mavenCentral()
-    dependencies.classpath("top.mrxiaom:LibrariesResolver-Gradle:1.7.21")
+    dependencies.classpath("top.mrxiaom:LibrariesResolver-Gradle:1.7.27")
 }
 val base = LibraryHelper(project)
 
@@ -36,7 +36,7 @@ dependencies {
     compileOnly("me.clip:placeholderapi:2.12.2")
     compileOnly(base.depend.annotations)
 
-    base.library(LibraryHelper.adventure("4.22.0"))
+    base.library(LibraryHelper.adventure("4.25.0"))
     base.collectPluginHolders()
 
     implementation(base.depend.nbtapi)
