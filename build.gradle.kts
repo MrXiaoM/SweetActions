@@ -9,14 +9,14 @@ plugins {
 
 buildscript {
     repositories.mavenCentral()
-    dependencies.classpath("top.mrxiaom:LibrariesResolver-Gradle:1.7.32")
+    dependencies.classpath("top.mrxiaom:LibrariesResolver-Gradle:1.7.33")
 }
 val base = LibraryHelper(project)
 
 group = "top.mrxiaom.sweet.actions"
 version = "1.0.0"
 val targetJavaVersion = 8
-val pluginBaseModules = base.modules.run { listOf(library, paper, actions, l10n) }
+val pluginBaseModules = base.modules.run { listOf(library, paper, actions, l10n, misc) }
 val shadowGroup = "top.mrxiaom.sweet.actions.libs"
 
 repositories {
@@ -39,9 +39,8 @@ dependencies {
     base.library(LibraryHelper.adventure("4.25.0"))
     base.collectPluginHolders()
 
-    implementation(base.depend.nbtapi)
+    implementation("de.tr7zw:item-nbt-api:2.16.0")
     implementation(base.depend.EvalEx)
-    implementation("com.github.technicallycoded:FoliaLib:0.4.4") { isTransitive = false }
     for (artifact in pluginBaseModules) {
         implementation("$artifact")
     }
@@ -66,7 +65,6 @@ tasks {
             "top.mrxiaom.pluginbase" to "base",
             "de.tr7zw.changeme.nbtapi" to "nbtapi",
             "com.ezylang.evalex" to "evalex",
-            "com.tcoded.folialib" to "folialib",
         ).forEach { (original, target) ->
             relocate(original, "$shadowGroup.$target")
         }
